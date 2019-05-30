@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Book Store - Login</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-color:#ededed;">
+
+	<div class="container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Author</th>
+					<th>Release date</th>
+					<th>Genre</th> 
+					<th>Price</th> 
+					<th>Available</th>
+					<th><a href="/login">Logout</a></th>
+				<!-- 	<th>Available</th>  -->
+					<th></th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				
+					<tr th:each="message : ${books}">
+						<td th:text="${message.author}"></td>
+						<td th:text="${message.releaseDate}"></td>
+						<td th:text="${message.genre}"></td>
+						<td th:text="${message.price}"></td>
+						<td th:text="${message.available}"></td>
+						<!--  <td th:text="${message.available}">Title</td> -->
+						<td><form action = "#" th:action="@{/books/{id} (id = ${message.id})}" th:method = "post">
+							<button type="submit" class="btn btn-success">Order book</button>
+						</form></td>
+						
+					</tr>
+				
+				
+				
+			</tbody>
+		</table>
+		
+		<a type="button" class="btn btn-success"
+							href="/orders">Borrowed Books</a>
+
+		<a type="button" class="btn btn-success"
+							href="/user-filter-author">Filter by author</a>
+		
+	</div>
+</body>
+</html>
