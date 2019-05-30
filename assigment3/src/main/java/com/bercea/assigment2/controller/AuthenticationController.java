@@ -42,27 +42,6 @@ public class AuthenticationController {
 		return modelAndView;
 	}
 
-//	@RequestMapping(value = "/home", method = RequestMethod.GET)
-//	public ModelAndView home() {
-//		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.setViewName("home"); // resources/template/home.html
-//		return modelAndView;
-//	}
-
-//	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-//	public ModelAndView adminHome() {
-//		ModelAndView modelAndView = new ModelAndView();
-//		modelAndView.setViewName("admin"); // resources/template/admin.html
-//		return modelAndView;
-//	}
-
-//	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-//	public String showTodos(ModelMap model) {
-//		//String name = getLoggedInUserName(model);
-//		//model.put("books", repository.findAll());
-//		//model.put("books", service.retrieveTodos(name));
-//		return "admin";
-//	}
 
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	@ModelAttribute("books")
@@ -71,11 +50,6 @@ public class AuthenticationController {
 		return (List<Book>) repository.findAll();
 	}
 
-//	@RequestMapping(value = "/home", method = RequestMethod.GET)
-//	@ModelAttribute("books")
-//	public List<Book> getBooks() {
-//		return (List<Book>) repository.findAll();
-//	}
 
 	@GetMapping("/home")
 	public ModelAndView getBook() {

@@ -3,31 +3,31 @@ package com.bercea.assigment2.handler.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bercea.assigment2.handler.Handler;
-import com.bercea.assigment2.model.Book;
 import com.bercea.assigment2.service.query.write.BookCommandService;
 
-public class AddNewBookHandler implements Handler {
+public class DeleteBookHandler implements Handler{
 
 	@Autowired
 	BookCommandService bookCommandService;
 	
-	Book book;
+	private int id;
 	
 	@Override
 	public void execute(String command) {
-		bookCommandService.addBook(getBook());
+		bookCommandService.deleteBook(id);
 	}
 
 	@Override
 	public String getCommand() {
-		return "addNewBook";
-	}
-
-	public Book getBook() {
-		return book;
+		return "deleteBook";
 	}
 	
-	public void setBook(Book book) {
-		this.book = book;
+	public int getId() {
+		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+
 }

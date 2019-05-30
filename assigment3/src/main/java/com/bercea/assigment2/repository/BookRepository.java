@@ -9,4 +9,6 @@ import com.bercea.assigment2.model.Book;
 
 public interface BookRepository extends JpaRepository<Book, Integer> {
 	List<Book> findByAuthor(String author);
+	
+	void deleteById(int id);
 }

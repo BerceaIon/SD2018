@@ -6,7 +6,7 @@ public interface BookCommandService {
 
 	void addBook(Book book);
 	
-	void deleteBook(Book book);
+	void deleteBook(int id);
 	
 	void borrowBook(Integer bookId, String userMail);
 	

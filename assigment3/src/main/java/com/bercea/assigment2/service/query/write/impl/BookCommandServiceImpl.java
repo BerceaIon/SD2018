@@ -35,8 +35,8 @@ public class BookCommandServiceImpl implements BookCommandService {
 	}
 
 	@Override
-	public void deleteBook(Book book) {
-		bookRepository.delete(book);
+	public void deleteBook(int id) {
+		bookRepository.deleteById(id);
 	}
 
 	@Override
