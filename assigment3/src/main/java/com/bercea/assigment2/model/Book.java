@@ -14,11 +14,13 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+
+import com.bercea.assigment2.decorator.Ownership;
 // observable
 // contine o lista de observeri care observa catre el
 @Entity
 @Table(name = "books")
-public class Book {
+public class Book implements Ownership{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "book_id")
@@ -119,6 +121,11 @@ public class Book {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	@Override
+	public String decorate() {
+		return "Book is";
 	}
 
 }

@@ -12,5 +12,7 @@ public interface BookQueryService {
 	List<BookOrder> getOrdersForAnUserByEmail(String email);
 	
 	BookOrder getBookOrderById(Integer id);
+	
+	public Iterable<Book> findAll();
 }
 

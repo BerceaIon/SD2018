@@ -1,13 +1,14 @@
 package com.bercea.assigment2.mediator.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.bercea.assigment2.handler.Handler;
 import com.bercea.assigment2.mediator.Mediator;
 
 public class MediatorImpl implements Mediator{
 
-	private ArrayList<Handler> handlers;
+	private List<Handler> handlers;
 	
 	public MediatorImpl() {
 		handlers = new ArrayList<Handler>();

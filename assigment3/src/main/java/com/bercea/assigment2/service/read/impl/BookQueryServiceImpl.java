@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bercea.assigment2.model.Book;
 import com.bercea.assigment2.model.BookOrder;
 import com.bercea.assigment2.repository.BookOrderRepository;
 import com.bercea.assigment2.service.read.BookQueryService;
 
+@Service
+@Transactional
 public class BookQueryServiceImpl implements BookQueryService {
 	@Autowired
 	private BookOrderRepository bookOrderRepository;
@@ -36,5 +40,10 @@ public class BookQueryServiceImpl implements BookQueryService {
 	@Override
 	public BookOrder getBookOrderById(Integer id) {
 		return bookOrderRepository.findById(id).get();
+	}
+
+	@Override
+	public Iterable<Book> findAll() {
+		return null;
 	}
 }

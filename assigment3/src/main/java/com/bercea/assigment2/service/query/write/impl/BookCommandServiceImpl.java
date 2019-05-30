@@ -5,27 +5,27 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bercea.assigment2.model.Book;
 import com.bercea.assigment2.model.BookOrder;
-import com.bercea.assigment2.model.Observer;
 import com.bercea.assigment2.model.User;
 import com.bercea.assigment2.repository.BookOrderRepository;
 import com.bercea.assigment2.repository.BookRepository;
-import com.bercea.assigment2.service.ObserverService;
-import com.bercea.assigment2.service.UserService;
 import com.bercea.assigment2.service.query.write.BookCommandService;
+import com.bercea.assigment2.service.query.write.UserCommandService;
 
+@Service
+@Transactional
 public class BookCommandServiceImpl implements BookCommandService {
 
 	@Autowired
-	private UserService userService;
+	private UserCommandService userService;
 	@Autowired
 	private BookRepository bookRepository;
 	@Autowired
 	private BookOrderRepository bookOrderRepository;
-	@Autowired
-	private ObserverService observerService;
 	
 	public static List<Book> books = new ArrayList<Book>();
 
@@ -56,11 +56,6 @@ public class BookCommandServiceImpl implements BookCommandService {
 			bookOrder.setBook(book);
 			book.setAvailable(false);
 			bookOrderRepository.save(bookOrder);
-		} else {
-			System.out.println("observer");
-			Observer observer = new Observer();
-			observer.setMail(user.getEmail());
-			observerService.addObserver(book, observer);
 		}
 	}
 
@@ -73,7 +68,6 @@ public class BookCommandServiceImpl implements BookCommandService {
 			return;
 		}
 		Book book = optionalBook.get();
-		observerService.notifyObservers(book);
 		book.setAvailable(true);
 		bookRepository.save(book);
 		bookOrderRepository.delete(bookOrder);
